@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_quill.fields import QuillField
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -17,7 +18,7 @@ class Category(models.Model):
 class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=128)
-    content = QuillField()
+    content = HTMLField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     creation_date = models.DateTimeField(auto_now_add=True)
 
