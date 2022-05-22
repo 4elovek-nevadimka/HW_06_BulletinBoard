@@ -3,28 +3,25 @@
 {% block title %} New Article {% endblock title %}
 
 {% block header %}
-    <h2>Добавление нового объявления:</h2>
+    <h2>Добавление нового объявления</h2>
 {% endblock header %}
 
 {% block content %}
 
     <form method="POST">
         {% csrf_token %}
-
         {{ form.media }}
-<!--        {{ form.as_p }}-->
-<!--        <input type="submit"/>-->
-
-        <h2>{{ form.author }}</h2>
-        <h2>{{ form.title }}</h2>
-        <h2>{{ form.category }}</h2>
+        <p>Укажите заголовок: {{ form.title }}</p>
+        <p>Выберите категорию: {{ form.category }} и Автора: {{ form.author }}</p>
         {{ form.content }}
         <div align="right">
             <input type="submit" value="Добавить объявление">
         </div>
     </form>
+
 {% endblock content %}
 
 {% block footer %}
+    <hr>
     <a href="{% url 'article_list' %}">К списку объявлений</a>
 {% endblock footer %}

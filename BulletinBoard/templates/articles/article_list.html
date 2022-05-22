@@ -1,0 +1,53 @@
+{% extends 'default.html' %}
+
+{% block title %} Bulletin Board {% endblock title %}
+
+{% block header %}
+
+    <div align="right">
+        {% if user.is_authenticated %}
+            <div>
+                Привет, <a href="{% url 'account' %}">{{ user.username }}</a>!
+            </div>
+        {% else %}
+             <div>
+                 Вы не зарегистрированы!<a href="/../accounts/login/">Войти</a>
+             </div>
+        {% endif %}
+    </div>
+
+    <div align="center">
+        <br>
+        <a href="{% url 'article_add' %}">Добавить новое объявление</a>
+    </div>
+
+    {% if articles %}
+
+    {% else %}
+        <h2>No Articles yet...</h2>
+    {% endif %}
+
+{% endblock header %}
+
+{% block content %}
+
+<div class="infinite-container" style="background: linear-gradient(180deg, white, #C5DDE8); ">
+    {% for article in articles %}
+        <div class="infinite-item"
+             style="background-color: #EECFBA; margin: auto; width: 60%; border: 5px solid white; padding: 10px;">
+            <h3>
+                <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a>
+            </h3>
+            <p>
+                <small>{{ article.author }} / {{ article.creation_date }}</small>
+            </p>
+            <p>{{ article.category|truncatechars:100 }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="loading" style="display: none;">
+    Loading...
+</div>
+
+{% endblock content %}

@@ -20,7 +20,6 @@ from .views import go_to_board
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', go_to_board),
     path('board/', include('board.urls')),
     # path('sign/', include('sign.urls')),

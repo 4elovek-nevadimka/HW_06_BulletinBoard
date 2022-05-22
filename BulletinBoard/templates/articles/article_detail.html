@@ -1,0 +1,24 @@
+{% extends 'default.html' %}
+
+{% block title %} {{ article.title }} {% endblock title %}
+
+{% block header %}
+    <h2>{{ article.title }}</h2>
+    <p>
+        <small>{{ article.author }} / {{ article.creation_date }}</small>
+    </p>
+    <div align = 'right'>
+        <a href="{% url 'article_delete' article.id %}">Удалить</a>
+        <a href="{% url 'article_update' article.id %}">Редактировать</a>
+        <a href="{% url 'article_delete' article.id %}">Оставить отклик</a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <p>{{ article.content|safe }}</p>
+{% endblock content %}
+
+{% block footer %}
+    <hr>
+    <a href="{% url 'article_list' %}">К списку объявлений</a>
+{% endblock footer %}

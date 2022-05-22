@@ -22,7 +22,7 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return f'/board/{self.id}'
+        return f'/board/articles/{self.id}'
 
     def __str__(self):
         return self.title

@@ -6,35 +6,35 @@ from .models import Article
 
 class ArticleList(ListView):
     model = Article
-    template_name = 'article_list.html'
+    template_name = 'articles/article_list.html'
     context_object_name = 'articles'
-    # ordering = ['-id']
-    # paginate_by = 10
+    ordering = ['-id']
+    paginate_by = 3
 
 
 class ArticleDetailView(DetailView):
-    template_name = 'article_detail.html'
-    # queryset = Post.objects.all()
+    template_name = 'articles/article_detail.html'
+    queryset = Article.objects.all()
 
 
 # class PostCreateView(PermissionRequiredMixin, CreateView):
 class ArticleCreateView(CreateView):
     # permission_required = ('news.add_post',)
-    template_name = 'article_create.html'
+    template_name = 'articles/article_create.html'
     form_class = ArticleForm
 
 
 # class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
 class ArticleUpdateView(UpdateView):
     # permission_required = ('news.change_post',)
-    template_name = 'article_update.html'
-    # form_class = PostForm
+    template_name = 'articles/article_update.html'
+    form_class = ArticleForm
 
-    # def get_object(self, **kwargs):
-    #     return Post.objects.get(pk=self.kwargs.get('pk'))
+    def get_object(self, **kwargs):
+        return Article.objects.get(pk=self.kwargs.get('pk'))
 
 
 class ArticleDeleteView(DeleteView):
-    template_name = 'article_delete.html'
-    # queryset = Post.objects.all()
-    # success_url = '/news/'
+    template_name = 'articles/article_delete.html'
+    queryset = Article.objects.all()
+    success_url = '/board/articles/'
