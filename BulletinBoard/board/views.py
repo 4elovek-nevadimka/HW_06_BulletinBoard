@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .forms import ArticleForm, QuillPostForm
+from .forms import ArticleForm
 from .models import Article
 
 
@@ -39,7 +38,3 @@ class ArticleDeleteView(DeleteView):
     template_name = 'article_delete.html'
     # queryset = Post.objects.all()
     # success_url = '/news/'
-
-
-def model_form_view(request):
-    return render(request, 'form_view.html', {'form': QuillPostForm()})

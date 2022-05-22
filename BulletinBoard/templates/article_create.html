@@ -7,12 +7,18 @@
 {% endblock header %}
 
 {% block content %}
+
     <form method="POST">
         {% csrf_token %}
+
+        {{ form.media }}
+<!--        {{ form.as_p }}-->
+<!--        <input type="submit"/>-->
+
         <h2>{{ form.author }}</h2>
         <h2>{{ form.title }}</h2>
         <h2>{{ form.category }}</h2>
-        {{ form }}
+        {{ form.content }}
         <div align="right">
             <input type="submit" value="Добавить объявление">
         </div>
