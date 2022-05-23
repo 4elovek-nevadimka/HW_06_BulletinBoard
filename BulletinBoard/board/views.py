@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .forms import ArticleForm
+from .forms import ArticleForm, UserResponseForm
 from .models import Article
 
 
@@ -38,3 +38,9 @@ class ArticleDeleteView(DeleteView):
     template_name = 'articles/article_delete.html'
     queryset = Article.objects.all()
     success_url = '/board/articles/'
+
+
+class UserResponseCreateView(CreateView):
+    # permission_required = ('news.add_post',)
+    template_name = 'user_responses/response_create.html'
+    form_class = UserResponseForm

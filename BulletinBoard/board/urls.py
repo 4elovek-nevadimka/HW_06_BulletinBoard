@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import ArticleList, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView
+from .views import ArticleList, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView, \
+    UserResponseCreateView
 
 urlpatterns = [
     # Список всех объявлений
@@ -15,7 +16,7 @@ urlpatterns = [
     path('articles/<int:pk>/delete/', ArticleDeleteView.as_view(), name='article_delete'),
 
     # Добавление отклика
-    # path('add/', ArticleCreateView.as_view(), name='article_add'),
+    path('responses/add/', UserResponseCreateView.as_view(), name='user_response_add'),
 
     # path('account/', AccountView.as_view(), name='account'),
 

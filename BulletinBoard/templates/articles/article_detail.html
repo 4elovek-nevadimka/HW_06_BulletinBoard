@@ -10,7 +10,7 @@
     <div align = 'right'>
         <a href="{% url 'article_delete' article.id %}">Удалить</a>
         <a href="{% url 'article_update' article.id %}">Редактировать</a>
-        <a href="{% url 'article_delete' article.id %}">Оставить отклик</a>
+        <a href="{% url 'user_response_add' %}">Оставить отклик</a>
     </div>
 {% endblock header %}
 

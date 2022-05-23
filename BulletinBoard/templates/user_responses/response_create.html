@@ -1,0 +1,24 @@
+{% extends 'default.html' %}
+
+{% block title %} New Response {% endblock title %}
+
+{% block header %}
+    <h2>Добавление нового отклика</h2>
+{% endblock header %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>Укажите текст: {{ form.text }}</p>
+        <div align="right">
+            <input type="submit" value="Добавить отклик">
+        </div>
+    </form>
+
+{% endblock content %}
+
+{% block footer %}
+    <hr>
+    <a href="{% url 'article_list' %}">К списку объявлений</a>
+{% endblock footer %}
