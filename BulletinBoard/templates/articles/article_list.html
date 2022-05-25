@@ -7,11 +7,11 @@
     <div align="right">
         {% if user.is_authenticated %}
             <div>
-                Привет, <a href="{% url 'account' %}">{{ user.username }}</a>!
+                Привет, <a href="{% url 'account_my_articles' %}">{{ user.username }}</a>!
             </div>
         {% else %}
              <div>
-                 Вы не зарегистрированы!<a href="/../accounts/login/">Войти</a>
+                 Вы не зарегистрированы!<a href="{% url 'sign-in' %}">Войти</a>
              </div>
         {% endif %}
     </div>

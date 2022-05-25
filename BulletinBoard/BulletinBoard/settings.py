@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
 
     'board',
+    'sign'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'BulletinBoard.wsgi.application'
 
+LOGIN_URL = '/sign/sign-in/'
+LOGIN_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

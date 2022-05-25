@@ -1,7 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import ArticleForm, UserResponseForm
-from .models import Article
+from .models import Article, UserResponse
 
 
 class ArticleList(ListView):
@@ -44,3 +45,33 @@ class UserResponseCreateView(CreateView):
     # permission_required = ('news.add_post',)
     template_name = 'user_responses/response_create.html'
     form_class = UserResponseForm
+
+
+class AccountMyArticlesView(LoginRequiredMixin, ListView):
+    template_name = 'account/account_my_articles.html'
+    model = Article
+    context_object_name = 'my_articles'
+    ordering = ['-id']
+
+    def get_queryset(self):
+        return super().get_queryset().filter(author=self.request.user)
+
+
+class AccountInboxView(LoginRequiredMixin, ListView):
+    template_name = 'account/account_inbox.html'
+    model = UserResponse
+    context_object_name = 'inbox_responses'
+    ordering = ['-id']
+
+    def get_queryset(self):
+        return super().get_queryset().filter(article__author=self.request.user)
+
+
+class AccountOutboxView(LoginRequiredMixin, ListView):
+    template_name = 'account/account_outbox.html'
+    model = UserResponse
+    context_object_name = 'outbox_responses'
+    ordering = ['-id']
+
+    def get_queryset(self):
+        return super().get_queryset().filter(author=self.request.user)

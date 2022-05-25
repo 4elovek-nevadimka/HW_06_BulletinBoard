@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import ArticleList, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView, \
-    UserResponseCreateView
+    UserResponseCreateView, AccountMyArticlesView, AccountInboxView, AccountOutboxView
 
 urlpatterns = [
     # Список всех объявлений
@@ -18,7 +18,9 @@ urlpatterns = [
     # Добавление отклика
     path('responses/add/', UserResponseCreateView.as_view(), name='user_response_add'),
 
-    # path('account/', AccountView.as_view(), name='account'),
+    path('account/my_articles', AccountMyArticlesView.as_view(), name='account_my_articles'),
+    path('account/inbox', AccountInboxView.as_view(), name='account_inbox'),
+    path('account/outbox', AccountOutboxView.as_view(), name='account_outbox'),
 
     # path('subscribe/<int:cat_id>', subscribe_me, name='subscribe'),
     # path('unsubscribe/<int:cat_id>', unsubscribe_me, name='unsubscribe'),
