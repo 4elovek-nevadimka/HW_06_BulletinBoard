@@ -50,7 +50,7 @@ class UserResponseCreateView(CreateView):
 class AccountMyArticlesView(LoginRequiredMixin, ListView):
     template_name = 'account/account_my_articles.html'
     model = Article
-    context_object_name = 'my_articles'
+    context_object_name = 'items_list'
     ordering = ['-id']
 
     def get_queryset(self):
@@ -60,7 +60,7 @@ class AccountMyArticlesView(LoginRequiredMixin, ListView):
 class AccountInboxView(LoginRequiredMixin, ListView):
     template_name = 'account/account_inbox.html'
     model = UserResponse
-    context_object_name = 'inbox_responses'
+    context_object_name = 'items_list'
     ordering = ['-id']
 
     def get_queryset(self):
@@ -70,7 +70,7 @@ class AccountInboxView(LoginRequiredMixin, ListView):
 class AccountOutboxView(LoginRequiredMixin, ListView):
     template_name = 'account/account_outbox.html'
     model = UserResponse
-    context_object_name = 'outbox_responses'
+    context_object_name = 'items_list'
     ordering = ['-id']
 
     def get_queryset(self):

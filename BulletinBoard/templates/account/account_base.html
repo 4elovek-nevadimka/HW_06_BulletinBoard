@@ -1,0 +1,59 @@
+{% extends 'default.html' %}
+
+{% block header %}
+
+    <table width="100%">
+        <tr>
+            <td>
+                <p>
+                    <a href="{% url 'account_my_articles' %}">Мои объявления</a> &ensp;
+                    <a href="{% url 'account_inbox' %}">Входящие отклики</a> &ensp;
+                    <a href="{% url 'account_outbox' %}">Исходящие отклики</a>
+                </p>
+            </td>
+            <td align="right">
+                <p>
+                    Вы вошли как {{ user.username }}
+                    <a href="{% url 'sign-out' %}">Выйти</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <table width="100%">
+        <tr>
+            <td>
+                <a href="{% url 'article_list' %}">К списку объявлений</a>
+            </td>
+            <td align="right">
+                <a href="{% url 'article_add' %}">Добавить новое объявление</a>
+            </td>
+        </tr>
+    </table>
+
+{% endblock header %}
+
+{% block content %}
+
+    {% if items_list %}
+
+        <div class="infinite-container" style="background: linear-gradient(180deg, white, #C5DDE8); ">
+            {% for item in items_list %}
+                <div class="infinite-item"
+                     style="border-radius: 25px; border: 2px solid #73AD21; padding: 20px;
+                     margin: 20px auto; width: 60%;">
+                    {% block item %}{% endblock item %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="loading" style="display: none;">
+            Loading...
+        </div>
+
+    {% else %}
+        {% block empty_list %}{% endblock empty_list %}
+    {% endif %}
+
+{% endblock content %}
