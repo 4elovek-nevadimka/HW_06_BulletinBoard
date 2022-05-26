@@ -1,12 +1,12 @@
 from django.urls import path
 
 from .views import ArticleList, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView, \
-    UserResponseCreateView, AccountMyArticlesView, AccountInboxView, AccountOutboxView
+    UserResponseCreateView, AccountMyArticlesView, AccountInboxView, AccountOutboxView, UserResponseDetailView
 
 urlpatterns = [
     # Список всех объявлений
     path('articles/', ArticleList.as_view(), name='article_list'),
-    # Конкретное объявление
+    # Страница объявления
     path('articles/<int:pk>/', ArticleDetailView.as_view(), name='article_detail'),
     # Добавление объявления
     path('articles/add/', ArticleCreateView.as_view(), name='article_add'),
@@ -17,6 +17,8 @@ urlpatterns = [
 
     # Добавление отклика
     path('responses/add/', UserResponseCreateView.as_view(), name='user_response_add'),
+    # Страница с откликом
+    path('responses/<int:pk>/', UserResponseDetailView.as_view(), name='user_response_detail'),
 
     path('account/my_articles', AccountMyArticlesView.as_view(), name='account_my_articles'),
     path('account/inbox', AccountInboxView.as_view(), name='account_inbox'),

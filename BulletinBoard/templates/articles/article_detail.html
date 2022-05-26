@@ -8,9 +8,12 @@
         <small>{{ article.author }} / {{ article.creation_date }}</small>
     </p>
     <div align = 'right'>
-        <a href="{% url 'article_delete' article.id %}">Удалить</a>
-        <a href="{% url 'article_update' article.id %}">Редактировать</a>
-        <a href="{% url 'user_response_add' %}">Оставить отклик</a>
+        {% if user == article.author %}
+            <a href="{% url 'article_delete' article.id %}">Удалить</a> &ensp;
+            <a href="{% url 'article_update' article.id %}">Редактировать</a>
+        {% else %}
+            <a href="{% url 'user_response_add' %}">Оставить отклик</a>
+        {% endif %}
     </div>
 {% endblock header %}
 

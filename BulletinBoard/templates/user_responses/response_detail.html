@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% block title %} {{ response.title }} {% endblock title %}
+
+{% block header %}
+    <h2>{{ response.title }}</h2>
+    <p>
+        <small>{{ response.author }} / {{ response.article__title }}</small>
+    </p>
+    <div align = 'right'>
+        <p>
+            Link to apply response here...
+        </p>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <p>{{ response.text }}</p>
+{% endblock content %}

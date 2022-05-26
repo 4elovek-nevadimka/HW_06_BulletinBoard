@@ -47,6 +47,11 @@ class UserResponseCreateView(CreateView):
     form_class = UserResponseForm
 
 
+class UserResponseDetailView(DetailView):
+    template_name = 'user_responses/response_detail.html'
+    queryset = UserResponse.objects.all()
+
+
 class AccountMyArticlesView(LoginRequiredMixin, ListView):
     template_name = 'account/account_my_articles.html'
     model = Article
