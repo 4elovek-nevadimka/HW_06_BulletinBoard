@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'ckeditor',
 
-    'board.apps.NewsConfig',
+    'board.apps.BoardConfig',
     'sign'
 ]
 
