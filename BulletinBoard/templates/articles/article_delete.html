@@ -20,6 +20,5 @@
             <input type="submit" value="Да, удалить!">
         </h3>
     </form>
-
-    <a href="{% url 'article_list' %}">К списку объявлений</a>
+    {{ block.super }}
 {% endblock footer %}

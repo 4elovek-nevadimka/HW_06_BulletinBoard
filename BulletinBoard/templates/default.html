@@ -6,9 +6,12 @@
     </head>
     <body>
         {% block header %}{% endblock header %}
-        <hr>
+            <hr>
         {% block content %}{% endblock content %}
 
-        {% block footer %}{% endblock footer %}
+        {% block footer %}
+            <hr>
+            <a href="{% url 'article_list' %}">К списку объявлений</a>
+        {% endblock footer %}
     </body>
 </html>
