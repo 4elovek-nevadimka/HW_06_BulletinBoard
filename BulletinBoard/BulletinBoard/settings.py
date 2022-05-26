@@ -140,6 +140,16 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'skillfactorymailserver'
+EMAIL_HOST_PASSWORD = 'SFms1234567890'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = 'skillfactorymailserver@gmail.com'
+
+
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
