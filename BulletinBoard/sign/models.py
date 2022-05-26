@@ -1,3 +1,14 @@
-from django.db import models
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.forms import EmailField
 
-# Create your models here.
+
+class BaseRegisterForm(UserCreationForm):
+    email = EmailField(label="Email")
+
+    class Meta:
+        model = User
+        fields = ("username",
+                  "email",
+                  "password1",
+                  "password2", )

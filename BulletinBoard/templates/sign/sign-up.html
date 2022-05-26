@@ -3,25 +3,25 @@
 {% block title %} Bulletin Board Login {% endblock title %}
 
 {% block header %}
-    <h2> Войти в систему </h2>
+    <h2> Регистрация </h2>
 {% endblock header %}
 
 {% block content %}
 
-    <form method="post" action="{% url 'sign-in' %}">
+    <form method="post" action="{% url 'sign-up' %}">
         {% csrf_token %}
 
         <div style="margin: auto; width: 20%; border: 5px solid white; padding: 10px;">
             <div align="center">
                 <p>{{ form.username.label_tag }}</p>
                 <p>{{ form.username }}</p>
-                <p>{{ form.password.label_tag }}</p>
-                <p>{{ form.password }}</p>
-                <input type="submit" value="Log in">
-            </div>
-            <div>
-                <br><hr>
-                <a href="{% url 'sign-up' %}"> Sign up </a>
+                <p>{{ form.email.label_tag }}</p>
+                <p>{{ form.email }}</p>
+                <p>{{ form.password1.label_tag }}</p>
+                <p>{{ form.password1 }}</p>
+                <p>{{ form.password2.label_tag }}</p>
+                <p>{{ form.password2 }}</p>
+                <input type="submit" value="Register">
             </div>
         </div>
 
