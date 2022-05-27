@@ -6,7 +6,7 @@ from .models import Article, UserResponse
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ['author', 'title', 'content', 'category']
+        fields = ['title', 'content', 'category']
 
 
 class UserResponseForm(ModelForm):

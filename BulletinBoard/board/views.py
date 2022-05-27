@@ -22,8 +22,12 @@ class ArticleDetailView(DetailView):
 # class PostCreateView(PermissionRequiredMixin, CreateView):
 class ArticleCreateView(CreateView):
     # permission_required = ('news.add_post',)
-    template_name = 'articles/article_create.html'
     form_class = ArticleForm
+    template_name = 'articles/article_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 # class ArticleUpdateView(PermissionRequiredMixin, UpdateView):

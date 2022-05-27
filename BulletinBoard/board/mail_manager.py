@@ -44,10 +44,10 @@ def create_response_mail_message(new_response):
         }
     )
     msg = EmailMultiAlternatives(
-        subject=f'Новый отклик по объявлению: {new_response.article__title}',
+        subject=f'Новый отклик по объявлению: {new_response.article.title}',
         body=new_response.text,
         from_email='skillfactorymailserver@yandex.ru',
-        to=[new_response.article__author.email],
+        to=[new_response.article.author.email],
     )
     msg.attach_alternative(html_content, "text/html")
     return msg
