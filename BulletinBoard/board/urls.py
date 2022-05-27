@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import ArticleList, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView, \
     UserResponseCreateView, AccountMyArticlesView, AccountInboxView, AccountOutboxView, UserResponseDetailView, \
-    UserResponseDeleteView
+    UserResponseDeleteView, response_apply
 
 urlpatterns = [
     # Список всех объявлений
@@ -23,10 +23,10 @@ urlpatterns = [
     # Удаление отклика
     path('responses/<int:pk>/delete/', UserResponseDeleteView.as_view(), name='user_response_delete'),
 
-    path('account/my_articles', AccountMyArticlesView.as_view(), name='account_my_articles'),
-    path('account/inbox', AccountInboxView.as_view(), name='account_inbox'),
-    path('account/outbox', AccountOutboxView.as_view(), name='account_outbox'),
+    path('account/my_articles/', AccountMyArticlesView.as_view(), name='account_my_articles'),
+    path('account/inbox/', AccountInboxView.as_view(), name='account_inbox'),
+    path('account/outbox/', AccountOutboxView.as_view(), name='account_outbox'),
 
-    # path('subscribe/<int:cat_id>', subscribe_me, name='subscribe'),
+    path('response_apply/<int:r_id>/', response_apply, name='response_apply'),
     # path('unsubscribe/<int:cat_id>', unsubscribe_me, name='unsubscribe'),
 ]

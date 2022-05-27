@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import ArticleForm, UserResponseForm
 from .models import Article, UserResponse
+from .tasks import response_apply_mail_notification
 
 
 class ArticleList(ListView):
@@ -96,3 +98,12 @@ class AccountOutboxView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(author=self.request.user)
+
+
+@login_required
+def response_apply(request, r_id):
+    response = UserResponse.objects.get(pk=r_id)
+    response.status = True
+    response.save()
+    response_apply_mail_notification.delay(r_id)
+    return redirect('/board/account/inbox/')

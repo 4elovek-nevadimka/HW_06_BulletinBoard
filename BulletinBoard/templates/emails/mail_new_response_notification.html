@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Новый отклик от {{ user.username }}!</h2>
-    <p>{{ response.text|truncatechars:50 }}</p>
+    <h2>Новый отклик от {{ response.author.username }}!</h2>
+    <p>{{ response.text }}</p>
     <a href="http://127.0.0.1:8000{% url 'user_response_detail' response.id %}">Перейти к отклику...</a>
 </body>
 </html>

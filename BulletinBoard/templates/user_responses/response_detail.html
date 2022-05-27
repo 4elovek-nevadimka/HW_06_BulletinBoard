@@ -15,7 +15,7 @@
             <a href="{% url 'user_response_delete' userresponse.id %}">Удалить</a>
         {% else %}
             {% if not userresponse.status %}
-                Принять отклик
+                <a href="{% url 'response_apply' userresponse.id %}">Принять отклик</a>
             {% endif %}
         {% endif %}
     </div>

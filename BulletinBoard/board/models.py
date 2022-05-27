@@ -35,4 +35,4 @@ class UserResponse(models.Model):
     status = models.BooleanField(default=False)
 
     def get_absolute_url(self):
-        return f'/board/responses/{self.id}'
+        return '/board/account/outbox/'
