@@ -1,0 +1,28 @@
+{% extends 'default.html' %}
+
+{% block title %} Delete response {% endblock title %}
+
+{% block header %}
+    <h2>
+        Отклик на
+        <a href="{% url 'article_detail' userresponse.article.id %}">{{ userresponse.article }}</a>
+    </h2>
+    <p>
+        Статус: {% if userresponse.status %} Принят {% else %} Не принят {% endif %}
+    </p>
+
+{% endblock header %}
+
+{% block content %}
+    <p>{{ userresponse.text }}</p>
+{% endblock content %}
+
+{% block footer %}
+    <form method="POST">
+        <h3 align="right">Вы действительно хотите удалить этот отклик?
+            {% csrf_token %}
+            <input type="submit" value="Да, удалить!">
+        </h3>
+    </form>
+    {{ block.super }}
+{% endblock footer %}

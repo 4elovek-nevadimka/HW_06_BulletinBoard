@@ -5,3 +5,17 @@
 {% block empty_list %}
     <h3>Пока нет откликов по вашим объявлениям...</h3>
 {% endblock empty_list %}
+
+{% block item %}
+    <h3>
+        <a href="{% url 'user_response_detail' item.id %}">Отклик</a>
+        на мое
+        <a href="{% url 'article_detail' item.article.id %}">{{ item.article }}</a>
+    </h3>
+    <p>
+        <small>Статус:
+            {% if item.status %} Принят {% else %} Не принят {% endif %}
+        </small>
+    </p>
+    <p>{{ item.text }}</p>
+{% endblock item %}

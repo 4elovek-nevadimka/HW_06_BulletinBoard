@@ -1,19 +1,27 @@
 {% extends 'default.html' %}
 
-{% block title %} {{ response.title }} {% endblock title %}
+{% block title %} {{ userresponse.title }} {% endblock title %}
 
 {% block header %}
-    <h2>{{ response.title }}</h2>
+    <h2>
+        Отклик на
+        <a href="{% url 'article_detail' userresponse.article.id %}">{{ userresponse.article }}</a>
+    </h2>
     <p>
-        <small>{{ response.author }} / {{ response.article__title }}</small>
+        Статус: {% if userresponse.status %} Принят {% else %} Не принят {% endif %}
     </p>
     <div align = 'right'>
-        <p>
-            Link to apply response here...
-        </p>
+        {% if user == userresponse.author %}
+            <a href="{% url 'user_response_delete' userresponse.id %}">Удалить</a>
+        {% else %}
+            {% if not userresponse.status %}
+                Принять отклик
+            {% endif %}
+        {% endif %}
     </div>
+
 {% endblock header %}
 
 {% block content %}
-    <p>{{ response.text }}</p>
+    <p>{{ userresponse.text }}</p>
 {% endblock content %}

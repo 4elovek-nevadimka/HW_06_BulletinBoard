@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .forms import ArticleForm, UserResponseForm
@@ -43,13 +44,24 @@ class ArticleDeleteView(DeleteView):
 
 class UserResponseCreateView(CreateView):
     # permission_required = ('news.add_post',)
-    template_name = 'user_responses/response_create.html'
     form_class = UserResponseForm
+    template_name = 'user_responses/response_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.article = Article.objects.get(pk=self.kwargs['a_id'])
+        return super().form_valid(form)
 
 
 class UserResponseDetailView(DetailView):
     template_name = 'user_responses/response_detail.html'
     queryset = UserResponse.objects.all()
+
+
+class UserResponseDeleteView(DeleteView):
+    template_name = 'user_responses/response_delete.html'
+    queryset = UserResponse.objects.all()
+    success_url = '/account/outbox/'
 
 
 class AccountMyArticlesView(LoginRequiredMixin, ListView):

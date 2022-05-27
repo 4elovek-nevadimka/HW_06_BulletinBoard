@@ -12,7 +12,7 @@
             <a href="{% url 'article_delete' article.id %}">Удалить</a> &ensp;
             <a href="{% url 'article_update' article.id %}">Редактировать</a>
         {% else %}
-            <a href="{% url 'user_response_add' %}">Оставить отклик</a>
+            <a href="{% url 'user_response_add' a_id=article.id %}">Оставить отклик</a>
         {% endif %}
     </div>
 {% endblock header %}

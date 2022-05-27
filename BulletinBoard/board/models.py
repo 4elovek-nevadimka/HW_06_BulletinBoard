@@ -33,3 +33,6 @@ class UserResponse(models.Model):
     text = models.CharField(max_length=256)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return f'/board/responses/{self.id}'

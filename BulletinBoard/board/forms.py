@@ -12,4 +12,4 @@ class ArticleForm(ModelForm):
 class UserResponseForm(ModelForm):
     class Meta:
         model = UserResponse
-        fields = ['author', 'text']
+        fields = ['text']
