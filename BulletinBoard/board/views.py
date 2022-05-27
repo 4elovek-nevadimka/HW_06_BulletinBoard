@@ -21,9 +21,7 @@ class ArticleDetailView(DetailView):
     queryset = Article.objects.all()
 
 
-# class PostCreateView(PermissionRequiredMixin, CreateView):
-class ArticleCreateView(CreateView):
-    # permission_required = ('news.add_post',)
+class ArticleCreateView(LoginRequiredMixin, CreateView):
     form_class = ArticleForm
     template_name = 'articles/article_create.html'
 
@@ -32,9 +30,7 @@ class ArticleCreateView(CreateView):
         return super().form_valid(form)
 
 
-# class ArticleUpdateView(PermissionRequiredMixin, UpdateView):
-class ArticleUpdateView(UpdateView):
-    # permission_required = ('news.change_post',)
+class ArticleUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'articles/article_update.html'
     form_class = ArticleForm
 
@@ -42,14 +38,13 @@ class ArticleUpdateView(UpdateView):
         return Article.objects.get(pk=self.kwargs.get('pk'))
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'articles/article_delete.html'
     queryset = Article.objects.all()
     success_url = '/board/articles/'
 
 
-class UserResponseCreateView(CreateView):
-    # permission_required = ('news.add_post',)
+class UserResponseCreateView(LoginRequiredMixin, CreateView):
     form_class = UserResponseForm
     template_name = 'user_responses/response_create.html'
 
@@ -64,7 +59,7 @@ class UserResponseDetailView(DetailView):
     queryset = UserResponse.objects.all()
 
 
-class UserResponseDeleteView(DeleteView):
+class UserResponseDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'user_responses/response_delete.html'
     queryset = UserResponse.objects.all()
     success_url = '/account/outbox/'
