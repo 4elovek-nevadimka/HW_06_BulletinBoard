@@ -13,7 +13,7 @@ class ArticleList(ListView):
     template_name = 'articles/article_list.html'
     context_object_name = 'articles'
     ordering = ['-id']
-    paginate_by = 3
+    paginate_by = 5
 
 
 class ArticleDetailView(DetailView):
@@ -75,6 +75,7 @@ class AccountMyArticlesView(LoginRequiredMixin, ListView):
     model = Article
     context_object_name = 'items_list'
     ordering = ['-id']
+    paginate_by = 5
 
     def get_queryset(self):
         return super().get_queryset().filter(author=self.request.user)
@@ -85,6 +86,7 @@ class AccountInboxView(LoginRequiredMixin, ListView):
     model = UserResponse
     context_object_name = 'items_list'
     ordering = ['-id']
+    paginate_by = 5
 
     def get_queryset(self):
         return super().get_queryset().filter(article__author=self.request.user)
@@ -95,6 +97,7 @@ class AccountOutboxView(LoginRequiredMixin, ListView):
     model = UserResponse
     context_object_name = 'items_list'
     ordering = ['-id']
+    paginate_by = 5
 
     def get_queryset(self):
         return super().get_queryset().filter(author=self.request.user)

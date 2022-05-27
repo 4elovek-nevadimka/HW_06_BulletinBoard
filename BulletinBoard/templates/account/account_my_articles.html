@@ -11,7 +11,7 @@
         <a href="{% url 'article_detail' item.id %}">{{ item.title }}</a>
     </h3>
     <p>
-        <small>{{ item.author }} / {{ item.creation_date }}</small>
+        <small> {{ item.author }} / {{ item.creation_date }} / {{ item.category }} </small>
     </p>
-    <p>{{ item.category|truncatechars:100 }}</p>
+    <p> {{ item.content|safe }} </p>
 {% endblock item %}
