@@ -18,4 +18,10 @@
         </small>
     </p>
     <p>{{ item.text }}</p>
+    <div align="right">
+        {% if not item.status %}
+            <a href="{% url 'response_apply' item.id %}">Принять отклик</a> &ensp;
+        {% endif %}
+        <a href="{% url 'user_response_delete' item.id %}">Удалить</a>
+    </div>
 {% endblock item %}

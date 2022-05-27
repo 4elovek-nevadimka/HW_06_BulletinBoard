@@ -62,7 +62,7 @@ class UserResponseDetailView(DetailView):
 class UserResponseDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'user_responses/response_delete.html'
     queryset = UserResponse.objects.all()
-    success_url = '/account/outbox/'
+    success_url = '/board/account/outbox/'
 
 
 class AccountMyArticlesView(LoginRequiredMixin, ListView):
