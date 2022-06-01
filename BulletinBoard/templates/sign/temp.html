@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+ <a href="#"   onclick='myFunction1()'>Button 1</a>
+<a href="#"   onclick="myFunction2()">Button 2</a>
+ <input type="submit" value="Verify" onclick="myFunction2()">
+
+<div id="call">
+<form>
+<div class="pole1" id="Field1Id">Field 1</div>
+<div class="pole2"  id="Field2Id">Field 2</div>
+</form>
+</div>
+
+<p id="demo"></p>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+function myFunction1() {
+
+  $("#Field1Id").show();
+  $("#Field2Id").hide();
+
+}
+
+function myFunction2() {
+
+   $("#Field1Id").hide();
+  $("#Field2Id").show();
+
+}
+</script>
+
+</body>
+</html>

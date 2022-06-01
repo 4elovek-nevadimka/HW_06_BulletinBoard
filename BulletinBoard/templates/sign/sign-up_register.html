@@ -1,6 +1,6 @@
 {% extends 'default.html' %}
 
-{% block title %} Bulletin Board Login {% endblock title %}
+{% block title %} Bulletin Board Registration {% endblock title %}
 
 {% block header %}
     <h2> Регистрация </h2>
@@ -8,7 +8,7 @@
 
 {% block content %}
 
-    <form method="post" action="{% url 'sign-up' %}">
+    <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
 
         <div style="margin: auto; width: 20%; border: 5px solid white; padding: 10px;">
@@ -22,6 +22,7 @@
                 <p>{{ form.password2.label_tag }}</p>
                 <p>{{ form.password2 }}</p>
                 <input type="submit" value="Register">
+                <p style="color:red;">{{ form.errors.password2 }}</p>
             </div>
         </div>
 

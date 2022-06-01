@@ -1,0 +1,27 @@
+{% extends 'default.html' %}
+
+{% block title %} Bulletin Board Verification {% endblock title %}
+
+{% block header %}
+    <h2> Подтверждение </h2>
+{% endblock header %}
+
+{% block content %}
+
+    <form method="post" action="{% url 'verify' %}">
+        {% csrf_token %}
+
+        <div style="margin: auto; width: 20%; border: 5px solid white; padding: 10px;">
+            <div align="center">
+                <p>{{ form.one_time_code.label_tag }}</p>
+                <p>{{ form.one_time_code }}</p>
+                <input type="submit" value="Verify">
+                <p style="color:red;">{{ form.errors }}</p>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}
+
+{% block footer %} {% endblock footer %}
